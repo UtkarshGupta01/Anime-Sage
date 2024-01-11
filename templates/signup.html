@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/static/Images/chopper-logo.png" type="image/x-icon">
+
+    <title>Anime Sage</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        body {
+            background-image: url("/static/Images/background-login.png");
+            background-position: center;
+            background-size: cover;
+            justify-content: center;
+            background-repeat: no-repeat;
+            align-items: center;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .signup {
+            background-color: rgba(0, 0, 0, 0.336);
+            box-shadow: 0 2px 10px 10px rgba(0, 0, 0, 0.6);
+            display: inline-flex;
+            flex-direction: column;
+            padding: 20px;
+            color: white;
+            border-radius: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+
+        form input {
+
+            width: 200px;
+            height: 40px;
+            color: #ffffff;
+            outline: none;
+            background: #3e89aeb1;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+
+        }
+
+        form input[type]::placeholder {
+            color: #ffffff;
+            opacity: 0.5;
+            padding-left: 3px;
+        }
+
+        .input-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon i {
+            margin-left: 5px;
+            margin-right: 10px;
+            color: #fff;
+        }
+
+        button {
+            font-size: 20px;
+            color: #ffffff;
+            outline: none;
+            background: #3e88a1;
+            border: none;
+            border-radius: 17px;
+            padding: 10px 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #2e6476;
+        }
+
+        .to_signup {
+            margin-top: 40px;
+        }
+
+        .to_signup a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .to_signup a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .input {
+            margin-top: 20px;
+        }
+
+        .input label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input input[type="password"] {
+            margin-left: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- sign up page starts -->
+
+    <div class="signup">
+        <h1>Welcome to Anime Sage!</h1>
+        <p style="margin-top: 8px; font-size: 18px; font-weight: 500;">Create an account</p>
+        <form action="/register_user" method="post">
+            <div class="input">
+                <div class="input-icon">
+                    <label for="f_name">First Name</label>
+                    <input type="text" id="firstName" placeholder="Your First Name" name="f_name" required
+                        style="margin-left: 27px;">
+                </div>
+                <div class="input-icon" style="margin-top: 15px;">
+                    <label for="l_name">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Your Last Name" name="l_name" required
+                        style="margin-left: 27px;">
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-icon">
+                    <label for="username">Username</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Choose a Username" name="username" required>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-icon">
+                    <label for="pwd">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Enter a Password" name="pwd" required>
+                    <i class="fas fa-eye show-password" style="cursor: pointer;"; onclick="togglePasswordVisibility()"></i>
+                </div>
+            </div>
+            <div class="input">
+                <div class="input-icon">
+                    <label for="c_pwd">Confirm Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="c_pwd" required
+                        onkeyup="checkPasswordMatch()" onchange="checkPasswordMatch()" onblur="checkPasswordMatch()">
+                    <i id="matchIcon" class="fas fa-times" style="margin-left: 4px; color: white; display:none;"></i>
+                </div>
+            </div>
+            <button>
+                Sign Up
+            </button>
+            <div class="to_signup">
+                Already have an account? &nbsp;<a href="{{ url_for('login') }}">Log in here</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- sign up page ends -->
+
+
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+</body>
+
+</html>
